@@ -54,6 +54,10 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     true
     )
 })
+scene.onOverlapTile(SpriteKind.Projectile, sprites.builtin.forestTiles1, function (sprite, location) {
+    tiles.setWallAt(location, false)
+    tiles.setTileAt(location, assets.tile`transparency16`)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`orange bauble`, function (sprite2, location2) {
     tiles.setTileAt(location2, assets.tile`transparency16`)
     info.changeScoreBy(20)
