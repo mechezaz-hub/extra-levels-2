@@ -66,6 +66,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite3, o
     otherSprite.destroy()
     info.changeLifeBy(-1)
 })
+scene.onOverlapTile(SpriteKind.Projectile, sprites.castle.tilePath5, function (sprite8, location7) {
+    tiles.setWallAt(location7, false)
+    tiles.setTileAt(location7, assets.tile`transparency16`)
+})
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     animation.runImageAnimation(
     mySprite,
