@@ -57,7 +57,6 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
 scene.onOverlapTile(SpriteKind.Player, assets.tile`orange bauble`, function (sprite2, location2) {
     tiles.setTileAt(location2, assets.tile`transparency16`)
     info.changeScoreBy(20)
-    info.changeLifeBy(1)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`poison pit`, function (sprite7, location6) {
     game.gameOver(false)
@@ -86,9 +85,11 @@ scene.onOverlapTile(SpriteKind.Projectile, assets.tile`skyblock`, function (spri
     tiles.setWallAt(location3, false)
     tiles.setTileAt(location3, assets.tile`transparency16`)
 })
-scene.onOverlapTile(SpriteKind.Projectile, sprites.builtin.forestTiles0, function (sprite8, location7) {
-    tiles.setWallAt(location7, false)
-    tiles.setTileAt(location7, assets.tile`transparency16`)
+info.onLifeZero(function () {
+    game.gameOver(false)
+    game.setGameOverEffect(false, effects.blizzard)
+    game.setGameOverPlayable(false, music.melodyPlayable(music.wawawawaa), false)
+    game.setGameOverMessage(false, "GAME OVER!")
 })
 let projectile: Sprite = null
 let mySprite: Sprite = null
