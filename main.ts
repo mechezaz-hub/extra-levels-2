@@ -43,6 +43,14 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function on_a_pressed() {
             bounce
             `)
 })
+scene.onOverlapTile(SpriteKind.Projectile, assets.tile`
+        bounce
+        `, function on_overlap_tile2(sprite8: Sprite, location7: tiles.Location) {
+    tiles.setWallAt(location7, false)
+    tiles.setTileAt(location7, assets.tile`
+        transparency16
+        `)
+})
 controller.left.onEvent(ControllerButtonEvent.Pressed, function on_left_pressed() {
     animation.runImageAnimation(mySprite, assets.animation`
             walk left
@@ -50,33 +58,25 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function on_left_pressed(
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`
         orange bauble
-        `, function on_overlap_tile2(sprite2: Sprite, location2: tiles.Location) {
+        `, function on_overlap_tile3(sprite2: Sprite, location2: tiles.Location) {
     tiles.setTileAt(location2, assets.tile`
         transparency16
         `)
     info.changeScoreBy(20)
 })
-controller.right.onEvent(ControllerButtonEvent.Pressed, function on_right_pressed() {
-    animation.runImageAnimation(mySprite, assets.animation`
-            walk right
-            `, 150, true)
+scene.onOverlapTile(SpriteKind.Player, assets.tile`
+        poison pit
+        `, function on_overlap_tile4(sprite7: Sprite, location6: tiles.Location) {
+    game.gameOver(false)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function on_on_overlap(sprite3: Sprite, otherSprite: Sprite) {
     otherSprite.destroy()
     info.changeLifeBy(-1)
 })
-scene.onOverlapTile(SpriteKind.Projectile, assets.tile`
-        skyblock
-        `, function on_overlap_tile3(sprite4: Sprite, location3: tiles.Location) {
-    tiles.setWallAt(location3, false)
-    tiles.setTileAt(location3, assets.tile`
-        transparency16
-        `)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`
-        chest2
-        `, function on_overlap_tile4(sprite5: Sprite, location4: tiles.Location) {
-    game.gameOver(true)
+controller.right.onEvent(ControllerButtonEvent.Pressed, function on_right_pressed() {
+    animation.runImageAnimation(mySprite, assets.animation`
+            walk right
+            `, 150, true)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`
         chest1
@@ -90,15 +90,15 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`
         `)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`
-        poison pit
-        `, function on_overlap_tile6(sprite7: Sprite, location6: tiles.Location) {
-    game.gameOver(false)
+        chest2
+        `, function on_overlap_tile6(sprite5: Sprite, location4: tiles.Location) {
+    game.gameOver(true)
 })
 scene.onOverlapTile(SpriteKind.Projectile, assets.tile`
-        bounce
-        `, function on_overlap_tile7(sprite8: Sprite, location7: tiles.Location) {
-    tiles.setWallAt(location7, false)
-    tiles.setTileAt(location7, assets.tile`
+        skyblock
+        `, function on_overlap_tile7(sprite4: Sprite, location3: tiles.Location) {
+    tiles.setWallAt(location3, false)
+    tiles.setTileAt(location3, assets.tile`
         transparency16
         `)
 })
