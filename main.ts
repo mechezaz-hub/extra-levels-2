@@ -57,6 +57,7 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
 scene.onOverlapTile(SpriteKind.Player, assets.tile`orange bauble`, function (sprite2, location2) {
     tiles.setTileAt(location2, assets.tile`transparency16`)
     info.changeScoreBy(20)
+    info.changeLifeBy(1)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`poison pit`, function (sprite7, location6) {
     game.gameOver(false)
